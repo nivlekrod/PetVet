@@ -1,0 +1,92 @@
+.form-wrapper {
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:host-context(.modal-form) .form-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+}
+
+:host-context(.modal-form) .form-card {
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 1rem;
+  box-shadow: none;
+}
+
+.form-card {
+  width: 100%;
+  border-radius: 16px;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-header {
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px 12px 0 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3f51b5;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Grid de campos do formulário */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+mat-form-field {
+  flex: 1 1 100%;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 600px) {
+  mat-form-field:not(.full-width) {
+    flex: 1 1 calc(50% - 0.75rem);
+  }
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button[type="submit"] {
+  min-width: 180px;
+}
+
+.ml-3 {
+  margin-left: 1rem;
+}

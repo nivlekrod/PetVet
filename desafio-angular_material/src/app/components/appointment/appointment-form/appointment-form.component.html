@@ -1,0 +1,112 @@
+<div class="form-wrapper">
+  <mat-card class="form-card">
+    <div>
+      @if (!isEditMode) {
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="goBack()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </button>
+      }
+    </div>
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="mr-2">event</mat-icon>
+        {{ isEditMode ? "Editar Agendamento" : "Novo Agendamento Manual" }}
+      </mat-card-title>
+      @if (isEditMode) {
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="closeDialog()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </button>
+      }
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="appointmentForm" class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Pet</mat-label>
+          <mat-select formControlName="pet">
+            @for (pet of pets; track pet.petId) {
+            <mat-option [value]="pet">{{ pet.name }}</mat-option>
+            }
+          </mat-select>
+          @if (appointmentForm.get('pet')?.invalid &&
+          appointmentForm.get('pet')?.touched) {
+          <mat-error>Pet é obrigatório.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Serviço</mat-label>
+          <mat-select formControlName="serviceType">
+            @for (type of serviceTypes; track type) {
+            <mat-option [value]="type">{{
+              type.replaceAll("_", " ")
+            }}</mat-option>
+            }
+          </mat-select>
+          @if (appointmentForm.get('serviceType')?.invalid &&
+          appointmentForm.get('serviceType')?.touched) {
+          <mat-error>Tipo de serviço obrigatório.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Data</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="appointmentDate"
+            placeholder="mm/dd/YYYY"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (appointmentForm.get('appointmentDate')?.invalid &&
+          appointmentForm.get('appointmentDate')?.touched) {
+          <mat-error>Data obrigatória.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Observações</mat-label>
+          <textarea
+            matInput
+            formControlName="notes"
+            rows="3"
+            placeholder="Informações adicionais (opcional)"
+          ></textarea>
+        </mat-form-field>
+      </form>
+      <!-- Ações -->
+      <div class="form-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          (click)="submit()"
+          [disabled]="appointmentForm.invalid || isLoading"
+        >
+          <mat-icon>check</mat-icon>
+          {{ isEditMode ? "Atualizar" : "Agendar" }}
+        </button>
+
+        @if (isLoading) {
+        <mat-spinner diameter="32" class="ml-3"></mat-spinner>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

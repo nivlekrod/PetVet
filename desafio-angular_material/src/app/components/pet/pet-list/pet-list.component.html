@@ -1,0 +1,79 @@
+<div class="page-container">
+  <div class="header">
+    <h1 class="page-title">Meus Pets</h1>
+    <button mat-flat-button color="primary" [routerLink]="['/pets/create']">
+      <mat-icon>add</mat-icon>
+      Novo Pet
+    </button>
+  </div>
+
+  <mat-card class="filter-card">
+    <mat-card-header>
+      <mat-card-title> Filtro </mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="filterForm" class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome do Pet</mat-label>
+        <input matInput formControlName="name" placeholder="Buscar por nome" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Espécie</mat-label>
+        <mat-select formControlName="species">
+          <mat-option value="">Todas as espécies</mat-option>
+          <mat-option value="DOG">Cachorro</mat-option>
+          <mat-option value="CAT">Gato</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Raça</mat-label>
+        <input matInput formControlName="breed" placeholder="Buscar por raça" />
+      </mat-form-field>
+
+      <div class="filter-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="button"
+          (click)="filterPets()"
+        >
+          Filtrar
+        </button>
+        <button mat-button type="button" (click)="resetFilters()">
+          Limpar
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="pet-grid">
+    @for (pet of pets; track pet.petId) {
+    <mat-card class="pet-card">
+      <img mat-card-image src="{{ pet.referenceImage }}" alt="{{ pet.name }}" />
+      <mat-card-content>
+        <h2 class="pet-name">{{ pet.name }}</h2>
+        <p class="pet-species">{{ pet.species }} - {{ pet.breed }}</p>
+        <p class="pet-info">
+          Idade: {{ pet.age }} anos | Peso: {{ pet.weight }} kg
+        </p>
+        <p class="pet-info">Tutor: {{ pet.tutor }} - {{ pet.emailTutor }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" (click)="viewDetails(pet)">
+          Detalhes
+        </button>
+        <button mat-stroked-button color="accent" (click)="openEditModal(pet)">
+          Editar
+        </button>
+        <button mat-stroked-button color="warn" (click)="deletePet(pet.petId!)">
+          Excluir
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    } @empty {
+    <p class="no-results">Nenhum pet encontrado.</p>
+    }
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<mat-card class="details-card">
+  <mat-card-header>
+    <div class="card-header-content">
+      <mat-icon class="icon">calendar_month</mat-icon>
+      <span class="title">Agendamento</span>
+      @if (appointment.origin === 'MANUAL') {
+      <span class="tag manual">Criado pelo Usuário</span>
+      } @else {
+      <span class="tag automatic">Automático</span>
+      }
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      <strong>Serviço:</strong>
+      {{ appointment.serviceType.replaceAll("_", " ") }}
+    </p>
+    <p>
+      <strong>Data:</strong>
+      {{ appointment.appointmentDate | date : "fullDate" }}
+    </p>
+    <p><strong>Pet:</strong> {{ appointment.pet.name }}</p>
+    <p><strong>Espécie:</strong> {{ appointment.pet.species }}</p>
+    <p><strong>Raça:</strong> {{ appointment.pet.breed }}</p>
+
+    @if (appointment.notes) {
+    <p><strong>Observações:</strong> {{ appointment.notes }}</p>
+    }
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button color="primary" (click)="editAppointment()">
+      <mat-icon>edit</mat-icon> Editar
+    </button>
+    <button mat-button color="warn" (click)="deleteAppointment()">
+      <mat-icon>delete</mat-icon> Excluir
+    </button>
+    <button mat-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon> Fechar
+    </button>
+  </mat-card-actions>
+</mat-card>

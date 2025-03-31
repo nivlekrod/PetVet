@@ -1,0 +1,85 @@
+.detail-card {
+  width: 100%;
+  max-width: 700px; /* ok, mas deve ser maior que 500px */
+  margin: 0 auto;
+}
+
+.detail-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+mat-card-content {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+h2 {
+  margin: 12px 0 8px 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #1a237e;
+  font-weight: 700;
+}
+
+mat-divider {
+  margin: 8px 0 16px 0;
+  width: 100%;
+}
+
+.data-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  margin-top: 1rem 1rem 0;
+  padding: 0;
+}
+
+.column {
+  max-width: 48%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .column {
+    max-width: 100%;
+  }
+}
+
+.column h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  color: #3f51b5;
+  text-align: left;
+}
+
+.column p {
+  margin: 4px 0;
+  line-height: 1.4;
+  text-align: left;
+  color: #212121;
+}
+
+mat-card-actions {
+  margin-top: 1rem;
+  justify-content: flex-end;
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem 1rem;
+}
+
+button[color="warn"] {
+  background-color: #e53935;
+  color: white;
+}
+
+button[color="warn"]:hover {
+  background-color: #c62828;
+}

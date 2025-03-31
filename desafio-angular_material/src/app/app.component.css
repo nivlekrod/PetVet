@@ -1,0 +1,138 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.sidenav-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1a237e;
+  justify-self: center;
+}
+
+mat-nav-list a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+mat-nav-list a:hover {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+mat-nav-list a.active-link {
+  background-color: #e8f0fe;
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+mat-icon {
+  margin-right: 0.75rem;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  line-height: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #1a237e;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.menu-button {
+  display: none;
+  background-color: #f2f4f8;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.main-content {
+  padding: 2rem;
+  background-color: #f9fbfd;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100vw;
+    max-width: 280px;
+    height: 100%;
+    padding: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .menu-button {
+    display: inline-flex;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px #dcdcdc;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    line-height: 0;
+    margin: 0;
+  }
+
+  .main-toolbar {
+    padding: 0.5rem 1rem;
+    justify-content: center;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .mat-mdc-dialog-container,
+  .mat-drawer-backdrop {
+    backdrop-filter: blur(3px);
+  }
+}

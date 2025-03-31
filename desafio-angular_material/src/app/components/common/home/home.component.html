@@ -1,0 +1,64 @@
+<div class="home-container">
+    <div class="welcome-section">
+      <h1 class="welcome-title">
+        Bem-vindo ao <span class="highlight">PetVet 🐾</span>
+      </h1>
+      <p class="welcome-description">
+        Uma plataforma moderna para cadastro de pets e agendamento de cuidados, com foco em simplicidade e eficiência.
+      </p>
+      <div class="action-buttons">
+        <button mat-flat-button color="primary" [routerLink]="['/pets/create']">
+          <mat-icon>pets</mat-icon>
+          Cadastrar Pet
+        </button>
+        <button mat-stroked-button color="primary" [routerLink]="['/appointments']">
+          <mat-icon>calendar_today</mat-icon>
+          Ver Agendamentos
+        </button>
+      </div>
+    </div>
+  
+    <div class="features-section">
+      <mat-card class="feature-card">
+        <mat-icon class="feature-icon">pets</mat-icon>
+        <h2 class="feature-title">Cadastro de Pets</h2>
+        <p class="feature-description">
+          Cadastre seus pets e acesse as informações deles a qualquer momento com um painel intuitivo.
+        </p>
+      </mat-card>
+  
+      <mat-card class="feature-card">
+        <mat-icon class="feature-icon">event</mat-icon>
+        <h2 class="feature-title">Agendamento de Cuidados</h2>
+        <p class="feature-description">
+          Agende vacinas, consultas e outros serviços em poucos cliques.
+        </p>
+      </mat-card>
+  
+      <mat-card class="feature-card">
+        <mat-icon class="feature-icon">shield</mat-icon>
+        <h2 class="feature-title">Segurança dos Dados</h2>
+        <p class="feature-description">
+          Os dados dos seus pets são armazenados com segurança e acessíveis apenas a você.
+        </p>
+      </mat-card>
+    </div>
+  
+    <mat-card class="get-started-card">
+      <div class="get-started-content">
+        <h2>Pronto para começar?</h2>
+        <p>Cadastre seu primeiro pet e agende os serviços de cuidados com facilidade.</p>
+      </div>
+      <div class="get-started-actions">
+        <button mat-flat-button color="primary" [routerLink]="['/pets/create']">
+          <mat-icon>pets</mat-icon>
+          Cadastrar Pet
+        </button>
+        <button mat-stroked-button color="primary" [routerLink]="['/appointments']">
+          <mat-icon>calendar_today</mat-icon>
+          Ver Agendamentos
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  

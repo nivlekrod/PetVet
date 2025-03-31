@@ -1,0 +1,124 @@
+<div class="form-wrapper">
+  <mat-card class="form-card">
+    <div>
+      @if (!isEditMode) {
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="goBack()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </button>
+      }
+    </div>
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="mr-2">pets</mat-icon>
+        {{ isEditMode ? "Editar Pet" : "Cadastro de Pet" }}
+      </mat-card-title>
+      @if (isEditMode) {
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="closeDialog()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </button>
+      }
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="petForm" class="pet-form">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" placeholder="Nome do Pet" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Espécie</mat-label>
+          <mat-select formControlName="species">
+            <mat-option value="">Selecione a espécie</mat-option>
+            @for (option of speciesOptions; track option) {
+            <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Raça</mat-label>
+          <input matInput formControlName="breed" placeholder="Raça do Pet" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Idade</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="age"
+            placeholder="Ex: 3"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Peso (kg)</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="weight"
+            placeholder="Ex: 5.2"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Cor</mat-label>
+          <input matInput formControlName="color" placeholder="Cor do Pet" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Informações adicionais"
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Tutor</mat-label>
+          <input matInput formControlName="tutor" placeholder="Nome do Tutor" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Email do Tutor</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="emailTutor"
+            placeholder="tutor@email.com"
+          />
+        </mat-form-field>
+      </form>
+
+      <div class="actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          (click)="submit()"
+          [disabled]="petForm.invalid || isLoading"
+        >
+          {{ isEditMode ? "Atualizar Pet" : "Cadastrar Pet" }}
+        </button>
+
+        @if (isLoading) {
+        <mat-spinner diameter="32" class="ml-3"></mat-spinner>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

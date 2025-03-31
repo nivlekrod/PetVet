@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Aplica estilos SOMENTE ao modal */
+::ng-deep .modal-form .mat-mdc-dialog-surface {
+  padding: 0 !important;
+  border-radius: 16px;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+/* Garante que o conteúdo do modal preencha 100% */
+::ng-deep .modal-form .mat-mdc-dialog-surface > * {
+  height: 100%;
+}

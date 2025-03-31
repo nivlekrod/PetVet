@@ -1,0 +1,31 @@
+<mat-card class="detail-card">
+  <img mat-card-image src="{{ pet.referenceImage }}" alt="{{ pet.name }}" />
+  <mat-card-content>
+    <h2>{{ pet.name }}</h2>
+    <mat-divider></mat-divider>
+
+    <div class="data-columns">
+      <div class="column">
+        <h3>Dados do Pet</h3>
+        <p><strong>Espécie:</strong> {{ pet.species }}</p>
+        <p><strong>Raça:</strong> {{ pet.breed }}</p>
+        <p><strong>Idade:</strong> {{ pet.age }} anos</p>
+        <p><strong>Peso:</strong> {{ pet.weight }} kg</p>
+        <p><strong>Cor:</strong> {{ pet.color }}</p>
+        <p><strong>Descrição:</strong> {{ pet.description }}</p>
+      </div>
+
+      <div class="column">
+        <h3>Dados do Tutor</h3>
+        <p><strong>Nome:</strong> {{ pet.tutor }}</p>
+        <p><strong>E-mail:</strong> {{ pet.emailTutor }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions >
+    <button mat-button color="accent" (click)="editPet()">Editar</button>
+    <button mat-button color="warn" (click)="deletePet()">Deletar</button>
+    <button mat-button (click)="closeDialog()">Fechar</button>
+  </mat-card-actions>
+</mat-card>

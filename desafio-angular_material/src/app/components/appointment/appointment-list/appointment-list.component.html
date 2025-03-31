@@ -1,0 +1,113 @@
+<div class="page-container">
+  <div class="header">
+    <h1 class="page-title">Meus Agendamentos</h1>
+    <button mat-flat-button color="primary" [routerLink]="['/appointments/create']">
+      <mat-icon>add</mat-icon>
+      Novo Agendamento
+    </button>
+  </div>
+
+  <mat-card class="filter-card">
+    <mat-card-header>
+      <mat-card-title>Filtro</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="filterForm" class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Pet</mat-label>
+        <mat-select formControlName="pet">
+          <mat-option value="">Todos os Pets</mat-option>
+          @for (pet of pets; track pet.petId) {
+          <mat-option [value]="pet.petId">{{ pet.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Serviço</mat-label>
+        <mat-select formControlName="serviceType">
+          <mat-option value="">Todos os serviços</mat-option>
+          @for (type of serviceTypes; track type) {
+          <mat-option [value]="type">{{ type.replaceAll("_", " ") }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <input matInput type="date" formControlName="appointmentDate" />
+      </mat-form-field>
+
+      <div class="filter-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="button"
+          (click)="filterAppointments()"
+        >
+          Filtrar
+        </button>
+        <button mat-button type="button" (click)="resetFilters()">
+          Limpar
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="appointment-grid">
+    @for (appointment of appointments; track appointment.appointmentId) {
+    <mat-card class="appointment-card">
+      <mat-card-content>
+        <h2 class="appointment-title">
+          {{ appointment.serviceType.replaceAll("_", " ") }}
+        </h2>
+        <p>
+          <strong>Data:</strong>
+          {{ appointment.appointmentDate | date : "fullDate" }}
+        </p>
+        <p><strong>Pet:</strong> {{ appointment.pet.name }}</p>
+        <p>
+          <strong>Espécie:</strong> {{ appointment.pet.species }} -
+          {{ appointment.pet.breed }}
+        </p>
+        @if (appointment.notes) {
+        <p><strong>Observações:</strong> {{ appointment.notes }}</p>
+        }
+
+        <!-- Badge de origem -->
+        @if (appointment.origin === 'MANUAL') {
+        <span class="tag manual">Criado pelo Usuário</span>
+        } @else {
+        <span class="tag automatic">Automático</span>
+        }
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="viewDetails(appointment)"
+        >
+          Detalhes
+        </button>
+        <button
+          mat-stroked-button
+          color="accent"
+          (click)="openEditModal(appointment)"
+        >
+          Editar
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="deleteAppointment(appointment.appointmentId!)"
+        >
+          Excluir
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    } @empty {
+    <p class="no-results">Nenhum agendamento encontrado.</p>
+    }
+  </div>
+</div>

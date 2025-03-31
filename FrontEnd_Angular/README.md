@@ -55,6 +55,7 @@ src/
 │   │   │   └── appointment-card/
 │   │   └── common/
 │   │       └── confirm-dialog/
+│   │       └── home/
 │   ├── models/
 │   │   ├── pet/
 │   │   └── appointment/
@@ -62,8 +63,6 @@ src/
 │   │   ├── pet/
 │   │   ├── appointment/
 │   │   └── common/            ← Serviço de feedback visual (snack-bar)
-│   ├── pages/
-│   │   └── home/
 │   └── app.component.ts / html / css
 ```
 
@@ -72,11 +71,10 @@ src/
 ## ⚙️ Tecnologias Utilizadas
 
 - **Angular 19+** (standalone components, `inject`, Angular Control Flow)
-- **TypeScript 5+**
+- **TypeScript**
 - **Angular Material**
-- **RxJS**
-- **SCSS / CSS3** moderno
-- **Java RESTful** no backend (não incluso neste repositório)
+- **CSS** moderno
+- **Java RESTful**
 
 ---
 
@@ -84,7 +82,7 @@ src/
 
 ```bash
 git clone git@git.gft.com:knou/desafio-angular.git
-cd desafio-angular_material
+cd FrontEnd_Angular
 npm install
 ng serve
 ```

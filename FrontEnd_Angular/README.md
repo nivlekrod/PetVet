@@ -73,7 +73,8 @@ src/
 - **Angular 19+** (standalone components, `inject`, Angular Control Flow)
 - **TypeScript**
 - **Angular Material**
-- **CSS** moderno
+- **CSS**
+- **HTML**
 - **Java RESTful**
 
 ---
